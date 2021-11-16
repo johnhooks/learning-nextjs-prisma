@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {},
+  "references": [
+    { "path": "../components" },
+    { "path": "../hooks" },
+    { "path": "../lib" },
+    { "path": "../pages" }
+  ],
+  "include": ["**/*"]
+}

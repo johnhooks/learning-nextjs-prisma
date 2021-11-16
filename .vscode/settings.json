@@ -12,8 +12,6 @@
     "node_modules/**": true,
     "package-lock.json": true
   },
-  "editor.quickSuggestionsDelay": 1000,
-  "typescript.suggest.completeJSDocs": false,
   "typescript.disableAutomaticTypeAcquisition": true,
   "eslint.autoFixOnSave": true,
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
@@ -33,12 +31,8 @@
     "editor.formatOnSave": false
   },
   "cSpell.words": [
-    "dev",
-    "hookscrane",
     "mimetype",
-    "Ponyfill",
     "tsbuildinfo",
-    "Typestate",
     "webp"
   ],
   "cSpell.ignorePaths": [

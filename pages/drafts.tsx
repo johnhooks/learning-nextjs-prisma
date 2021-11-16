@@ -1,12 +1,11 @@
 import type { GetServerSideProps, NextPage } from "next";
-import Head from "next/head";
 
-import { FeedQuery, FeedDocument, useFeedQuery } from "generated/client-codegen";
+import { DraftsQuery, DraftsDocument, useDraftsQuery } from "generated/client-codegen";
 import { createApolloClientSSR, addApolloState } from "lib/apollo-client-ssr";
 import Post from "components/post";
 
-const HomePage: NextPage = () => {
-  const { loading, error, data } = useFeedQuery({
+const DraftsPage: NextPage = () => {
+  const { loading, error, data } = useDraftsQuery({
     fetchPolicy: "cache-and-network",
   });
 
@@ -20,15 +19,10 @@ const HomePage: NextPage = () => {
 
   return (
     <>
-      <Head>
-        <title>Learning Next</title>
-        <meta name="description" content="Learning Next.js, GraphQL, and Prisma" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>{" "}
       <div className="page">
-        <h1>My Blog</h1>
+        <h1>Drafts</h1>
         <main>
-          {data.feed.map(post => (
+          {data.drafts.map(post => (
             <div key={post.id} className="post">
               <Post {...post} />
             </div>
@@ -51,13 +45,13 @@ const HomePage: NextPage = () => {
   );
 };
 
-export default HomePage;
+export default DraftsPage;
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const apolloClient = createApolloClientSSR();
 
-  await apolloClient.query<FeedQuery>({
-    query: FeedDocument,
+  await apolloClient.query<DraftsQuery>({
+    query: DraftsDocument,
   });
 
   return addApolloState(apolloClient);
