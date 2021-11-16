@@ -6,9 +6,10 @@ export const postByIdQueryField = queryField("postById", {
     id: nonNull(intArg()),
   },
   resolve: async (_, { id }, { prisma }) => {
-    await prisma.post.findUnique({
+    const post = await prisma.post.findUnique({
       where: { id },
     });
+    if (post) return post;
     return null;
   },
 });
